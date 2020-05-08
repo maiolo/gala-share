@@ -1,0 +1,12 @@
+<div class='container'>
+  <h2>See what we have for you:</h2>
+  <div class="products">
+    <% @products.each do |product| %>
+    <div class='product-card'>
+      <h4><%= product.name %></h4>
+      <p><%= product.description %></p>
+    </div>
+    <% end %>
+  </div>
+  <%= link_to "Add a product", new_user_product_path(current_user), class: "btn btn-danger"%>
+</div>

@@ -1,0 +1,8 @@
+<h2> what product will you add? </h2>
+<%= simple_form_for [ @user, @product ] do |f| %>
+  <%= f.input :name%>
+  <%= f.input :price%>
+  <%= f.input :size%>
+  <%= f.input :description%>
+  <%= f.submit %>
+  <%end%>
