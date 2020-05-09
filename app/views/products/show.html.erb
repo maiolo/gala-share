@@ -1,0 +1,12 @@
+<div class='container'>
+  <div class='product'>
+    <h3><%= @product.name %></h3>
+    <p><%= @product.price %></p>
+    <p><%= @product.description%></p>
+    <%if current_user == @product.user%>
+      <%= link_to "edit your product", edit_product_path(@product), class: "btn btn-danger"%>
+    <% end %>
+  </div>
+
+  <%= link_to "go back", products_path, class:"btn btn-danger"%>
+  
