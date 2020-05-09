@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users 
   root to: "pages#home" 
+  get '/user' => "products#index", :as => :user_root
   get "/dashboard", to: 'pages#dashboard' 
   resources :users, only: [ :show, :edit ]
   resources :deals, only: [ :index, :show, :edit, :update ]
