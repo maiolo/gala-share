@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="dashboard">
+    <h3>Here's Your stuff <%= @user.email %></h3>
+  </div>
+  <div class="products overflow-auto">
+    <% @products.each do |product| %>
+      <div class='product-card'>
+        <h4><%= link_to product.name , product_path(product) %></h4>
+        <p><%= product.description %></p>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "go back", products_path, class: "btn btn-danger"%>
+</div>
