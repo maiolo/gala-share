@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @user = current_user
   end
 
   def edit
