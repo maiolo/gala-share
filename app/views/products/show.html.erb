@@ -3,10 +3,12 @@
     <h3><%= @product.name %></h3>
     <p><%= @product.price %></p>
     <p><%= @product.description%></p>
+    <% @product.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 600, width: 300, crop: :fill %>
+    <% end %>
     <%if current_user == @product.user%>
       <%= link_to "edit your product", edit_product_path(@product), class: "btn btn-danger"%>
     <% end %>
   </div>
 
   <%= link_to "go back", products_path, class:"btn btn-danger"%>
-  
