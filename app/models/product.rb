@@ -9,4 +9,5 @@ class Product < ApplicationRecord
   validates :price, presence: true
   validates :size, presence: true
   validates :photos, presence: true
+  validates :deal_type, presence: true, inclusion: { in: ['Buy', 'Rent'] }
 end
