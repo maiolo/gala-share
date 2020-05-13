@@ -2,9 +2,12 @@ class DealsController < ApplicationController
   before_action :set_deal, only: [:show, :update]
 
   def create
-    @deal = Deal.new(deals_params)
+    @product = Product.find(params[:product_id])
+    @deal = Deal.new
+    @deal.product = @product
     @deal.user = current_user
     @deal.save
+    raise
     redirect_to dashboard_path
   end
 
