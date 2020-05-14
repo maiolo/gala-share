@@ -11,6 +11,5 @@ class PagesController < ApplicationController
     @products.each do |product|
       @deals_vendor << Deal.find_by(product_id: product.id)
     end
-    raise
   end
 end 

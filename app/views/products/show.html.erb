@@ -6,9 +6,11 @@
     <% @product.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 600, width: 300, crop: :fill %>
     <% end %>
-    <%= link_to @product.deal_type, deal_path(@product), :method => :post %>
+   
     <%if current_user == @product.user%>
       <%= link_to "edit your product", edit_product_path(@product), class: "btn btn-danger"%>
+    <%else%>
+      <%= link_to @product.deal_type, deal_path(@product), :method => :post , class: "btn btn-outline-danger" %>
     <% end %>
   </div>
 

@@ -2,11 +2,13 @@
   <h2>See what we have for you:</h2>
   <div class="products">
     <% @products.each do |product| %>
-    <div class='product-card'>
-      <%= cl_image_tag product.photos.first.key, height: 300, width: 150, crop: :fill %>
-      <h4><%= link_to product.name , product_path(product) %></h4>
-      <p><%= product.description %></p>
-    </div>
+      <% if product.available %>
+        <div class='product-card'>
+          <%= cl_image_tag product.photos.first.key, height: 300, width: 150, crop: :fill %>
+          <h4><%= link_to product.name , product_path(product) %></h4>
+          <p><%= product.description %></p>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <%= link_to "Add a product", new_product_path, class: "btn btn-danger"%>

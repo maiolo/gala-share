@@ -7,8 +7,39 @@
       <div class='product-card'>
         <h4><%= link_to product.name , product_path(product) %></h4>
         <p><%= product.description %></p>
+        
       </div>
     <% end %>
   </div>
+
+  <div class="deals overflow-auto">
+    <% @deals_vendor.each do |deal| %>
+      <div class='deal-card'>
+        <h5><%= link_to deal.product.name , product_path(deal.product) %></h5>
+        <p>You <%= deal.product.deal_type == 'Buy' ? "Sold it to " : "You Rented to " %><b><%= deal.user.email %></b></p>
+        <% if deal.approved %>
+          <p> This order was Finished </p>
+        <% else %>
+          <p> This order is Pending </p>
+        <% end %>
+        <%= link_to "Change order status", deal_path(deal), method: :put, class: "btn btn-small btn-danger"%>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="deals overflow-auto">
+    <% @deals_buyer.each do |deal| %>
+      <div class='deal-card'>
+        <h5><%= link_to deal.product.name , product_path(deal.product) %></h5>
+        <p><%= deal.user.email %></p>
+        <% if deal.approved %>
+          <p> This order was Finished </p>
+        <% else %>
+          <p> This order is Pending </p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
   <%= link_to "go back", products_path, class: "btn btn-danger"%>
 </div>
