@@ -10,4 +10,12 @@ class Product < ApplicationRecord
   validates :size, presence: true
   validates :photos, presence: true
   validates :deal_type, presence: true, inclusion: { in: ['Buy', 'Rent'] }
+
+  include PgSearch::Model
+
+  pg_search_scope :search_in_products,
+    against: [:name, :description, :size],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
