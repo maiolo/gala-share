@@ -4,6 +4,8 @@
   <%= f.input :price%>
   <%= f.input :size%>
   <%= f.input :description%>
+  <%= f.input :deal_type, collection: ['Buy', 'Rent']%>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.input :available%>
   <%= f.submit %>
   <%end%>
