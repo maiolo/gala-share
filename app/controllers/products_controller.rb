@@ -1,8 +1,12 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only:[:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    if params[:query].present?
+      @products = Product.search_in_products(params[:query])
+    else
+      @products = Product.all
+    end
   end
 
   def show
@@ -46,5 +50,4 @@ class ProductsController < ApplicationController
   def products_params
     params.require(:product).permit(:name, :price, :size, :description, :deal_type, photos: [])
   end
-
 end
