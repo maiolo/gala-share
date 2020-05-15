@@ -10,3 +10,12 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.search-bar { 
+  width: 300px;
+  margin-right: 20px;
+  .form-control {
+    border-radius: 50px;
+  }
+}
+
