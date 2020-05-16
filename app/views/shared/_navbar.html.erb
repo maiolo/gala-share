@@ -1,11 +1,11 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <% if user_signed_in? %>
     <%= link_to products_path, class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <%= image_tag "cabide_logo.png" %>
     <% end %>
   <% else %>
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <%= image_tag "cabide_logo.png" %>
     <% end %>
   <% end %>
 
@@ -17,6 +17,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
+        <li class="nav-item search-bar"> 
+        <%= form_tag products_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Encontre a roupa dos seus sonhos"
+          %>
+          <%#<%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+        </li>
         <li class="nav-item active">
           <%= link_to "Home", products_path, class: "nav-link" %>
         </li>
