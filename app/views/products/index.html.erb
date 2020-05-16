@@ -7,8 +7,11 @@
         <div class='product-card' style="background-image:url(<%=cl_image_path product.photos.first.key %>);">
          <%# <%= cl_image_tag product.photos.first.key %>
           <div class="content">
-            <h4><%= link_to product.name , product_path(product) %></h4>
+            <h4><%= link_to product.name , product_path(product), class: 'stretched-link' %></h4>
             <p><%= product.description %></p>
+            <div class="product-price">
+              <span> R$<%= product.price %> </span>
+            </div>
           </div>
         </div>
       <% end %>

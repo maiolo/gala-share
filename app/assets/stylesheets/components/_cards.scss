@@ -1,5 +1,11 @@
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .product-card {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: flex-end;
   width: 200px;
@@ -9,14 +15,41 @@
   background-position: center;
   background-repeat: no-repeat;
 
+
   .content {
     text-decoration: none;
     color: white;
     width: 100%;
-    height: 100px;
-    background-color: rgba($color: #fffdfd, $alpha: 0.3);
+    height: 45%;
+    background-color: rgba($color: #f0f0f017, $alpha: 0.3);
+    transition: 0.5s;
+    padding: 0px 10px;
+    
   }
-  :hover {
-    background-color: rgb(207, 204, 204);
+
+  .content:hover {
+    background-color: rgba(224, 224, 224, 0.849);
+    transition: 0.5s;
+    color: #3f3e3e
   }
+
+  a{
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  a:hover { 
+    font-weight: bold;
+    color: #adadad;
+    text-shadow: 2px 2px black;
+    transition: 0.5s;
+  }
+
+  .content .product-price { 
+    font-weight: bold;
+    position: relative;
+    text-align: end;
+    top: 10%;
+  }
+  
 }
