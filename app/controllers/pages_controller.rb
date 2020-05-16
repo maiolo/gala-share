@@ -10,7 +10,9 @@ class PagesController < ApplicationController
     @deals_buyer = Deal.where(user_id: @user.id)
     @deals_vendor = []
     @products.each do |product|
-      @deals_vendor << Deal.find_by(product_id: product.id)
+      Deal.where(product_id: product.id).each do |deal|
+        @deals_vendor << deal
+      end
     end
   end
 end 

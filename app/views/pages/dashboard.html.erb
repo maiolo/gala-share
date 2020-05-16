@@ -1,45 +1,59 @@
-<div class="container">
-  <div class="dashboard">
-    <h3>Here's Your stuff <%= @user.email %></h3>
-  </div>
-  <div class="products overflow-auto">
+<div class="dashboard">
+  <% if @products.length > 0  %>
+  <h3>Here's your Products <%= @user.email %></h3>
+  <div class="overflow-auto">
     <% @products.each do |product| %>
-      <div class='product-card'>
-        <h4><%= link_to product.name , product_path(product) %></h4>
-        <p><%= product.description %></p>
-        
+      <div class='card-dashboard'>
+        <%=cl_image_tag product.photos.first.key, class: "dashboard-product-img" %>
+        <div>
+          <h4><%= link_to product.name , product_path(product) %></h4>
+          <p><%= product.description %></p>
+        </div>
       </div>
     <% end %>
   </div>
-
-  <div class="deals overflow-auto">
-    <% @deals_vendor.each do |deal| %>
-      <div class='deal-card'>
-        <h5><%= link_to deal.product.name , product_path(deal.product) %></h5>
-        <p>You <%= deal.product.deal_type == 'Buy' ? "Sold it to " : "You Rented to " %><b><%= deal.user.email %></b></p>
-        <% if deal.approved %>
-          <p> This order was Finished </p>
-        <% else %>
-          <p> This order is Pending </p>
-        <% end %>
-        <%= link_to "Change order status", deal_path(deal), method: :put, class: "btn btn-small btn-danger"%>
-      </div>
+  <%end%>
+ 
+  <% if @deals_vendor.length > 0 %>
+  <h3>Here's your sellings orders</h3>
+  <div class="overflow-auto">
+      <% @deals_vendor.each do |deal| %>
+        <div class='card-dashboard'>
+         <%=cl_image_tag deal.product.photos.first.key, class: "dashboard-product-img" %>
+          <div>
+            <h5><%= link_to deal.product.name , product_path(deal.product) %></h5>
+            <p>You <%= deal.product.deal_type == 'Buy' ? "may sell it to " : "may rent to " %><b><%= deal.user.email %></b></p>
+            <% if deal.approved %>
+              <p> This order was Finished </p>
+            <% else %>
+              <p> This order need approval </p>
+            <% end %>
+          </div>
+            <%= link_to "Change order status", deal_path(deal), method: :put, class: "btn btn-small btn-danger"%>
+        </div>
     <% end %>
   </div>
+  <%end%>
 
-  <div class="deals overflow-auto">
+  <%if @deals_buyer.length > 0 %>
+  <h3>Here's your buying orders</h3>
+  <div class="overflow-auto">
     <% @deals_buyer.each do |deal| %>
-      <div class='deal-card'>
-        <h5><%= link_to deal.product.name , product_path(deal.product) %></h5>
-        <p><%= deal.user.email %></p>
-        <% if deal.approved %>
-          <p> This order was Finished </p>
-        <% else %>
-          <p> This order is Pending </p>
-        <% end %>
+      <div class='card-dashboard'>
+        <%=cl_image_tag deal.product.photos.first.key, class: "dashboard-product-img" %>
+        <div>
+          <h5><%= link_to deal.product.name , product_path(deal.product) %></h5>
+          <p><%= deal.user.email %></p>
+          <% if deal.approved %>
+            <p> This order was Finished </p>
+          <% else %>
+            <p> This order is Pending </p>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
+  <%end%>
 
-  <%= link_to "go back", products_path, class: "btn btn-danger"%>
 </div>
+  <%= link_to "go back", products_path, class: "btn btn-danger"%>
